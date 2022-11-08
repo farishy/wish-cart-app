@@ -12,6 +12,10 @@ const LeftSide = styled.div`
   column-gap: 1rem;
 `;
 
+const rightSide = styled.div`
+
+`
+
 export default function AppBar() {
   return (
     <Container>
@@ -21,7 +25,9 @@ export default function AppBar() {
         <span>Home</span>
         <span>About</span>
       </LeftSide>
-      <div></div>
+      <rightSide>
+        <div></div>
+      </rightSide>
     </Container>
   );
 }

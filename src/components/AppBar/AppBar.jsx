@@ -1,5 +1,5 @@
-import { Divider } from "@mui/material";
-import styled from "styled-components";
+import { Avatar, Button, Divider } from "@mui/material";
+import styled from "@emotion/styled";
 
 const Container = styled.div`
   display: grid;
@@ -7,27 +7,45 @@ const Container = styled.div`
   padding: 1rem;
 `;
 
+const MenuContainer = styled.div`
+  display: flex;
+  column-gap: 1rem;
+  ${(p) => p.theme.breakpoints.down("md")} {
+    display: none;
+  }
+`;
+
 const LeftSide = styled.div`
   display: flex;
   column-gap: 1rem;
 `;
 
-const rightSide = styled.div`
+const RightSide = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 1rem;
+`;
 
-`
-
-export default function AppBar() {
+export default function AppBar({ onClick }) {
   return (
     <Container>
       <LeftSide>
         <b>Wish Cart</b>
-        <Divider orientation="vertical" flexItem />
-        <span>Home</span>
-        <span>About</span>
+        <MenuContainer>
+          <Divider orientation="vertical" flexItem />
+          <span>Beranda</span>
+          <span>Tentang</span>
+        </MenuContainer>
       </LeftSide>
-      <rightSide>
-        <div></div>
-      </rightSide>
+      <RightSide>
+        {/* <Avatar src="/broken-image.jpg" /> */}
+        <Button variant="contained" size="small" onClick={onClick}>
+          Tambah Keinginan
+        </Button>
+        {/* <Button variant="contained" size="small">
+          Sign Up
+        </Button> */}
+      </RightSide>
     </Container>
   );
 }

@@ -1,0 +1,59 @@
+{
+  "lists": [
+    {
+      "id": 1,
+      "namaBarang": "Baju Merah",
+      "deskripsiBarang": "ini barang bagus!",
+      "hargaBarang": "100000",
+      "jumlahBarang": "4",
+      "linkPembelian": "https://www.tokopedia.com/archive-cuddly/cuddly-himari-playsuit-bamboo-cotton-baby-clothes-pistachio-6-9m?src=topads",
+      "totalHarga": 400000
+    },
+    {
+      "id": 2,
+      "namaBarang": "Baju Biru",
+      "deskripsiBarang": "ini barang bagus!",
+      "hargaBarang": "100000",
+      "jumlahBarang": "1",
+      "linkPembelian": "https://www.tokopedia.com/archive-cuddly/cuddly-himari-playsuit-bamboo-cotton-baby-clothes-pistachio-6-9m?src=topads",
+      "totalHarga": "100000"
+    },
+    {
+      "id": 3,
+      "namaBarang": "Baju Kuning",
+      "deskripsiBarang": "ini barang bagus!",
+      "hargaBarang": "100000",
+      "jumlahBarang": "1",
+      "linkPembelian": "https://www.tokopedia.com/archive-cuddly/cuddly-himari-playsuit-bamboo-cotton-baby-clothes-pistachio-6-9m?src=topads",
+      "totalHarga": "100000"
+    },
+    {
+      "namaBarang": "Baju Baru",
+      "deskripsiBarang": "Helli ini barang bagus",
+      "hargaBarang": "78000",
+      "jumlahBarang": "3",
+      "linkPembelian": "https://www.tokopedia.com/archive-cuddly/cuddly-himari-playsuit-bamboo-cotton-baby-clothes-pistachio-6-9m?src=topads",
+      "totalHarga": 234000,
+      "id": 5
+    },
+    {
+      "namaBarang": "The Sims 3 Newest Expansion dan Update Include Base Game - DOWNLOAD DIRECT",
+      "deskripsiBarang": "Kondisi: Baru\nBerat Satuan: 120 g\nKategori: CD PC dan Laptop Gaming\nEtalase: PC GAMES\n-YUK BUDAYAKAN BACA DESKRIPSI DULU -\n\nThe Sims 4 Newest Expansion dan Update Include Base Game\n\nTersedia versi\n\n-Download (35GB) - ✔️ langsung download tanpa menunggu pengiriman\n-DVD (9 DVD) - ✔️ alternatif hemat tanpa harus download\n-USB 64GB - ✔️ install lebih mudah tanpa harus download",
+      "hargaBarang": "39000",
+      "jumlahBarang": "3",
+      "linkPembelian": "https://www.tokopedia.com/mwgamess/the-sims-4-newest-expansion-dan-update-include-base-game-download-direct?extParam=ivf%3Dfalse%26src%3Dsearch",
+      "totalHarga": 117000,
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

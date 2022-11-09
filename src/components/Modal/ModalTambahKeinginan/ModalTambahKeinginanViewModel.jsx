@@ -6,6 +6,13 @@ export default function ModalTambahKeinginanViewModel() {
   const schema = yup.object({
     namaBarang: yup.string().required("Masukkan Nama Barang"),
     deskripsiBarang: yup.string().required("Masukkan Deskripsi Barang"),
+    linkGambar: yup
+      .string()
+      .required("Masukkan Link Gambar Barang")
+      .matches(
+        /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/,
+        "Link Gambar Tidak Valid"
+      ),
     hargaBarang: yup
       .string()
       .required("Masukkan Harga Barang")

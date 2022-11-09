@@ -4,10 +4,8 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   IconButton,
   Input,
-  TextField,
 } from "@mui/material";
 
 import CloseIcon from "@mui/icons-material/Close";
@@ -20,6 +18,7 @@ import { CheckMobile } from "../../../shared/helpers";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { rupiahCurrencyFormat } from "../../../shared/helpers";
 
 const HeaderDialog = styled.div`
   margin-top: 1rem;
@@ -41,6 +40,7 @@ export default function ModalUpdateKeinginan({
   onClose,
   onOpen,
   namaBarang,
+  linkGambar,
   deskripsiBarang,
   hargaBarang,
   jumlahBarang,
@@ -55,12 +55,22 @@ export default function ModalUpdateKeinginan({
 
   useEffect(() => {
     form.setValue("id", id);
+    form.setValue("linkGambar", linkGambar);
     form.setValue("namaBarang", namaBarang);
     form.setValue("deskripsiBarang", deskripsiBarang);
     form.setValue("hargaBarang", hargaBarang);
     form.setValue("jumlahBarang", jumlahBarang);
     form.setValue("linkPembelian", linkPembelian);
-  }, [form.setValue]);
+  }, [
+    form,
+    id,
+    linkGambar,
+    namaBarang,
+    deskripsiBarang,
+    hargaBarang,
+    jumlahBarang,
+    linkPembelian,
+  ]);
 
   const handleUpdate = (data) => {
     const totalHarga = data.hargaBarang * data.jumlahBarang;
@@ -86,7 +96,7 @@ export default function ModalUpdateKeinginan({
         dispatch(__getLists());
         Swal.fire({
           icon: "success",
-          title: "Barang Keinginan Berhasil Diubah!",
+          text: "Barang Keinginan Berhasil Diubah!",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -126,6 +136,30 @@ export default function ModalUpdateKeinginan({
                   <Input
                     type="text"
                     className="text-center mt-1 w-100"
+                    {...field}
+                  />
+                </FormGroup>
+              )}
+            />
+            <Controller
+              control={form.control}
+              name="linkGambar"
+              render={({ field, fieldState }) => (
+                <FormGroup
+                  className="my-lg-2 my-md-1 my-sm-1 my-1 w-100"
+                  label="Link Gambar"
+                  isRequired
+                  showChildErrorSign
+                  errorMessage={fieldState?.error?.message}
+                  isError={!!fieldState?.error}
+                >
+                  <Input
+                    type="text"
+                    className="text-center mt-1 w-100"
+                    onBlur={field.onBlur}
+                    ref={field.ref}
+                    value={field.value}
+                    onChange={field.onChange}
                     {...field}
                   />
                 </FormGroup>
@@ -218,10 +252,11 @@ export default function ModalUpdateKeinginan({
           <div className="text-end my-3">
             <span>Jumlah Harga</span>
             <h1>
-              Rp
               {watchAllFields.hargaBarang && watchAllFields.jumlahBarang
-                ? watchAllFields.hargaBarang * watchAllFields.jumlahBarang
-                : 0}
+                ? rupiahCurrencyFormat(
+                    watchAllFields.hargaBarang * watchAllFields.jumlahBarang
+                  )
+                : rupiahCurrencyFormat(0)}
             </h1>
           </div>
         </DialogContent>

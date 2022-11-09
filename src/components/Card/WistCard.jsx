@@ -1,21 +1,20 @@
-import styled from "@emotion/styled";
 import {
   Card,
-  CardActions,
   CardContent,
   CardMedia,
   Typography,
   Button,
   Divider,
 } from "@mui/material";
-import backgroundImage from "../../assets/img_2.png";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { __getLists } from "../../redux/modules/listSlice";
+import { rupiahCurrencyFormat } from "../../shared/helpers";
 
 export default function WishCard({
   id,
+  gambar,
   namaBarang,
   deskripsiBarang,
   hargaBarang,
@@ -49,14 +48,14 @@ export default function WishCard({
 
   return (
     <Card>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        height="140"
-        image={backgroundImage}
-      />
+      <CardMedia component="img" alt="gambar" height="300px" image={gambar} />
       <CardContent className="d-grid gap-1">
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{ maxHeight: "150px" }}
+        >
           {namaBarang}
         </Typography>
         <div className="d-flex gap-1 justify-content-between align-items-center">
@@ -64,7 +63,7 @@ export default function WishCard({
             Harga perItem
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Rp{hargaBarang}
+            {rupiahCurrencyFormat(hargaBarang)}
           </Typography>
         </div>
         <Divider />
@@ -80,7 +79,11 @@ export default function WishCard({
         <Typography gutterBottom component="div">
           Deskripsi
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ height: "200px" }}
+        >
           {deskripsiBarang}
         </Typography>
         <Typography
@@ -89,7 +92,7 @@ export default function WishCard({
           component="div"
           className="text-end mt-3"
         >
-          Rp{totalHarga}
+          {rupiahCurrencyFormat(totalHarga)}
         </Typography>
       </CardContent>
       <div className="m-3 d-grid gap-2">

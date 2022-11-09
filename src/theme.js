@@ -1,6 +1,4 @@
 import { createTheme } from "@mui/material";
-import { create } from "@mui/material/styles/createTransitions";
-
 export const theme = createTheme({
   palette: {
     primary: {
@@ -13,7 +11,7 @@ export const theme = createTheme({
       main: "#F73859",
     },
     warning: {
-        main: "#F1D18A",
-      },
+      main: "#F1D18A",
+    },
   },
 });

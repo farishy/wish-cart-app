@@ -5,6 +5,13 @@ import * as yup from "yup";
 export default function ModalUpdateKeinginan() {
   const schema = yup.object({
     namaBarang: yup.string().required("Masukkan Nama Barang"),
+    linkGambar: yup
+      .string()
+      .required("Masukkan Link Gambar Barang")
+      .matches(
+        /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/,
+        "Link Gambar Tidak Valid"
+      ),
     deskripsiBarang: yup.string().required("Masukkan Deskripsi Barang"),
     hargaBarang: yup
       .string()

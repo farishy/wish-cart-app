@@ -10,7 +10,6 @@ import ModalTambahKeinginan from "../../components/Modal/ModalTambahKeinginan/Mo
 import { useDispatch, useSelector } from "react-redux";
 import { __getLists } from "../../redux/modules/listSlice";
 import ModalUpdateKeinginan from "../../components/Modal/ModalUpdateKeinginan/ModalUpdateKeinginan";
-
 const Greeting = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -58,13 +57,11 @@ const CardContainer = styled.div`
 `;
 
 export default function Home() {
-  const rootUrl = "http://localhost:3000/lists";
   const dispatch = useDispatch();
   const { lists, isLoading, error } = useSelector((state) => state.lists);
 
   useEffect(() => {
     dispatch(__getLists());
-    // console.log('tes effect', lists);
   }, [dispatch]);
 
   console.log(lists, "list here");
@@ -83,6 +80,7 @@ export default function Home() {
     useState(false);
 
   const [selectedId, setSelectedId] = useState("");
+  const [selectedLinkGambar, setSelectedLinkGambar] = useState("");
   const [selectedNamaBarang, setSelectedNamaBarang] = useState("");
   const [selectedDeskripsiBarang, setSelectedDeskripsiBarang] = useState("");
   const [selectedHargaBarang, setSelectedHargaBarang] = useState("");
@@ -93,6 +91,7 @@ export default function Home() {
   const handleClickUpdateBtn = ({
     id,
     namaBarang,
+    linkGambar,
     deskripsiBarang,
     hargaBarang,
     jumlahBarang,
@@ -101,6 +100,7 @@ export default function Home() {
   }) => {
     setSelectedId(id);
     setSelectedNamaBarang(namaBarang);
+    setSelectedLinkGambar(linkGambar);
     setSelectedDeskripsiBarang(deskripsiBarang);
     setSelectedHargaBarang(hargaBarang);
     setSelectedJumlahBarang(jumlahBarang);
@@ -128,6 +128,7 @@ export default function Home() {
         <ModalUpdateKeinginan
           id={selectedId}
           namaBarang={selectedNamaBarang}
+          linkGambar={selectedLinkGambar}
           deskripsiBarang={selectedDeskripsiBarang}
           hargaBarang={selectedHargaBarang}
           jumlahBarang={selectedJumlahBarang}
@@ -162,6 +163,7 @@ export default function Home() {
             <WishCard
               key={idx}
               id={list.id}
+              gambar={list.linkGambar}
               namaBarang={list.namaBarang}
               deskripsiBarang={list.deskripsiBarang}
               hargaBarang={list.hargaBarang}
@@ -177,6 +179,7 @@ export default function Home() {
                     handleClickUpdateBtn({
                       id: list.id,
                       namaBarang: list.namaBarang,
+                      linkGambar: list.linkGambar,
                       deskripsiBarang: list.deskripsiBarang,
                       hargaBarang: list.hargaBarang,
                       jumlahBarang: list.jumlahBarang,

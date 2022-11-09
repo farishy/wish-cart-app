@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import styled from "@emotion/styled";
+import { rupiahCurrencyFormat } from "../../shared/helpers";
 
 const Container = styled.div`
   border-radius: 16px;
@@ -29,7 +30,7 @@ export default function MyBalance({ onClick }) {
             Hello <b>Miechan</b>,
           </div>
           <h6>Tabungan Saat Ini</h6>
-          <h1 style={{ color: "#328380" }}>Rp1.000.000,00</h1>
+          <h1 style={{ color: "#328380" }}>{rupiahCurrencyFormat(1000000)}</h1>
           <Button variant="outlined" className="my-2" onClick={onClick}>
             Update Tabungan
           </Button>

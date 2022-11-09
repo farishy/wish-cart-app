@@ -4,10 +4,8 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   IconButton,
   Input,
-  TextField,
 } from "@mui/material";
 
 import CloseIcon from "@mui/icons-material/Close";
@@ -19,6 +17,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { __getLists } from "../../../redux/modules/listSlice";
 import Swal from "sweetalert2";
+import { rupiahCurrencyFormat } from "../../../shared/helpers";
 
 const HeaderDialog = styled.div`
   margin-top: 1rem;
@@ -44,6 +43,7 @@ export default function ModalTambahKeinginan({ onClose }) {
 
   const createLists = async ({
     namaBarang,
+    linkGambar,
     deskripsiBarang,
     hargaBarang,
     jumlahBarang,
@@ -52,6 +52,7 @@ export default function ModalTambahKeinginan({ onClose }) {
   }) => {
     await axios.post(rootUrl, {
       namaBarang,
+      linkGambar,
       deskripsiBarang,
       hargaBarang,
       jumlahBarang,
@@ -67,6 +68,7 @@ export default function ModalTambahKeinginan({ onClose }) {
     const totalHarga = data.hargaBarang * data.jumlahBarang;
     createLists({
       namaBarang: data.namaBarang,
+      linkGambar: data.linkGambar,
       deskripsiBarang: data.deskripsiBarang,
       hargaBarang: data.hargaBarang,
       jumlahBarang: data.jumlahBarang,
@@ -100,6 +102,30 @@ export default function ModalTambahKeinginan({ onClose }) {
                 <FormGroup
                   className="my-lg-2 my-md-1 my-sm-1 my-1 w-100"
                   label="Nama Barang"
+                  isRequired
+                  showChildErrorSign
+                  errorMessage={fieldState?.error?.message}
+                  isError={!!fieldState?.error}
+                >
+                  <Input
+                    type="text"
+                    className="text-center mt-1 w-100"
+                    onBlur={field.onBlur}
+                    ref={field.ref}
+                    value={field.value}
+                    onChange={field.onChange}
+                    {...field}
+                  />
+                </FormGroup>
+              )}
+            />
+            <Controller
+              control={form.control}
+              name="linkGambar"
+              render={({ field, fieldState }) => (
+                <FormGroup
+                  className="my-lg-2 my-md-1 my-sm-1 my-1 w-100"
+                  label="Link Gambar"
                   isRequired
                   showChildErrorSign
                   errorMessage={fieldState?.error?.message}
@@ -220,10 +246,11 @@ export default function ModalTambahKeinginan({ onClose }) {
           <div className="text-end my-3">
             <span>Jumlah Harga</span>
             <h1>
-              Rp
               {watchAllFields.hargaBarang && watchAllFields.jumlahBarang
-                ? watchAllFields.hargaBarang * watchAllFields.jumlahBarang
-                : 0}
+                ? rupiahCurrencyFormat(
+                    watchAllFields.hargaBarang * watchAllFields.jumlahBarang
+                  )
+                : rupiahCurrencyFormat(0)}
             </h1>
           </div>
         </DialogContent>

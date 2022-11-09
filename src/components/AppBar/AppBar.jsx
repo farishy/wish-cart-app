@@ -1,4 +1,4 @@
-import { Avatar, Button, Divider } from "@mui/material";
+import { Button, Divider } from "@mui/material";
 import styled from "@emotion/styled";
 
 const Container = styled.div`
@@ -38,13 +38,9 @@ export default function AppBar({ onClick }) {
         </MenuContainer>
       </LeftSide>
       <RightSide>
-        {/* <Avatar src="/broken-image.jpg" /> */}
         <Button variant="contained" size="small" onClick={onClick}>
           Tambah Keinginan
         </Button>
-        {/* <Button variant="contained" size="small">
-          Sign Up
-        </Button> */}
       </RightSide>
     </Container>
   );

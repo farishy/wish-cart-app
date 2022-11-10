@@ -23,7 +23,7 @@ export default function WishCard({
   totalHarga,
   updateButton,
 }) {
-  const rootUrl = "http://localhost:3000/lists";
+  const rootUrl = "http://localhost:3100/lists";
   const dispatch = useDispatch();
 
   const handleLinkPembelian = (url) => {

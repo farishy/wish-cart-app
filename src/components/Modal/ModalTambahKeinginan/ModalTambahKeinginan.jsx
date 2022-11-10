@@ -38,7 +38,7 @@ export default function ModalTambahKeinginan({ onClose }) {
   const { form } = ModalTambahKeinginanViewModel();
   const { isMobile } = CheckMobile();
   const watchAllFields = form.watch();
-  const rootUrl = "http://localhost:3000/lists";
+  const rootUrl = "http://localhost:3100/lists";
   const dispatch = useDispatch();
 
   const createLists = async ({
@@ -64,7 +64,6 @@ export default function ModalTambahKeinginan({ onClose }) {
   };
 
   const handleTambah = (data) => {
-    console.log(data);
     const totalHarga = data.hargaBarang * data.jumlahBarang;
     createLists({
       namaBarang: data.namaBarang,
@@ -86,7 +85,7 @@ export default function ModalTambahKeinginan({ onClose }) {
 
   return (
     <>
-      <Dialog open onClose={onClose} fullScreen={isMobile ? true : false}>
+      <Dialog open onClose={onClose} fullWidth fullScreen={isMobile ? true : false}>
         <HeaderDialog>
           <h5>Tambah Keinginan</h5>
           <IconButton onClick={onClose}>

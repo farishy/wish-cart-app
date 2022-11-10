@@ -64,7 +64,6 @@ export default function Home() {
     dispatch(__getLists());
   }, [dispatch]);
 
-  console.log(lists, "list here");
   if (isLoading) {
     console.log("loading");
   }

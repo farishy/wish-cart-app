@@ -22,6 +22,21 @@ const InnerContainer = styled.div`
 `;
 
 export default function MyBalance({ onClick }) {
+  const dispatch = useDispatch();
+  const { tabungan, isLoading, error } = useSelector((state) => state.lists);
+
+  useEffect(() => {
+    dispatch(__getLists());
+  }, [dispatch]);
+
+  console.log(lists, "list here");
+  if (isLoading) {
+    console.log("loading");
+  }
+
+  if (isLoading) {
+    console.log(JSON.stringify(error));
+  }
   return (
     <Container>
       <InnerContainer>

@@ -11,7 +11,7 @@ export const __getLists = createAsyncThunk(
     'getLists',
     async (payload, thunkApi) => {
         try {
-            const { data } = await axios.get('http://localhost:3100/lists');
+            const { data } = await axios.get('https://expensive-coal-frog.glitch.me/lists');
             return thunkApi.fulfillWithValue(data);
         }
         catch (e) {

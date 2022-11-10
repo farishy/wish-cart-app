@@ -38,7 +38,7 @@ export default function ModalTambahKeinginan({ onClose }) {
   const { form } = ModalTambahKeinginanViewModel();
   const { isMobile } = CheckMobile();
   const watchAllFields = form.watch();
-  const rootUrl = "http://localhost:3100/lists";
+  const rootUrl = "https://expensive-coal-frog.glitch.me/lists";
   const dispatch = useDispatch();
 
   const createLists = async ({

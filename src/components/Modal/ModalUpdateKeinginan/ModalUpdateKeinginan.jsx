@@ -50,7 +50,7 @@ export default function ModalUpdateKeinginan({
   const { form } = ModalUpdateKeinginanViewModel();
   const { isMobile } = CheckMobile();
   const watchAllFields = form.watch();
-  const rootUrl = "http://localhost:3000/lists";
+  const rootUrl = "http://localhost:3100/lists";
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -74,7 +74,6 @@ export default function ModalUpdateKeinginan({
 
   const handleUpdate = (data) => {
     const totalHarga = data.hargaBarang * data.jumlahBarang;
-    console.log(data);
     onClose();
     Swal.fire({
       text: "Anda yakin ingin mengubah barang keinginan ini?",
@@ -112,7 +111,7 @@ export default function ModalUpdateKeinginan({
 
   return (
     <>
-      <Dialog open onClose={onClose} fullScreen={isMobile ? true : false}>
+      <Dialog open onClose={onClose} fullWidth fullScreen={isMobile ? true : false}>
         <HeaderDialog>
           <h5>Ubah Barang Keinginan</h5>
           <IconButton onClick={onClose}>
